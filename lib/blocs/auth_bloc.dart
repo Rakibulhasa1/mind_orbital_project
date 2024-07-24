@@ -23,7 +23,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Stream<AuthState> _mapLoginToState(AuthLogin event) async* {
     try {
-      // Simulate login process
       final response = await http.get(
         Uri.parse('https://669666110312447373c26117.mockapi.io/users'),
       );
@@ -44,7 +43,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         yield AuthError(message: 'Failed to login');
       }
     } catch (e) {
-      yield AuthError(message: 'Login failed');
+      yield AuthError(message: 'Login failed: ${e.toString()}');
     }
   }
 
@@ -54,20 +53,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Stream<AuthState> _mapRegisterToState(AuthRegister event) async* {
     try {
-      // Simulate registration process
       final response = await http.post(
         Uri.parse('https://669666110312447373c26117.mockapi.io/users'),
-        body: event.user.toJson(),
+        body: jsonEncode(event.user.toJson()),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 201) {
-        yield AuthLoggedIn(user: event.user);
+        final newUser = User.fromJson(jsonDecode(response.body));
+        yield AuthLoggedIn(user: newUser);
       } else {
-        yield AuthError(message: 'Registration failed');
+        yield AuthError(message: 'Registration failed: ${response.reasonPhrase}');
       }
     } catch (e) {
-      yield AuthError(message: 'Registration failed');
+      yield AuthError(message: 'Registration failed: ${e.toString()}');
     }
   }
 
@@ -82,10 +81,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (response.statusCode == 200) {
         yield AuthLoggedIn(user: event.user);
       } else {
-        yield AuthError(message: 'Update failed');
+        yield AuthError(message: 'Update failed: ${response.reasonPhrase}');
       }
     } catch (e) {
-      yield AuthError(message: 'Update failed');
+      yield AuthError(message: 'Update failed: ${e.toString()}');
     }
   }
 }

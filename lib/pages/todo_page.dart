@@ -1,4 +1,4 @@
-// pages/todo_page.dart
+ 
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,28 +35,28 @@ class TodoPage extends StatelessWidget {
             },
             child: Text('Add To Do'),
           ),
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: state.todos.length,
-          //     itemBuilder: (context, index) {
-          //       final todo = state.todos[index];
-          //       return ListTile(
-          //         title: Text(todo.title),
-          //         trailing: IconButton(
-          //           icon: Icon(Icons.delete),
-          //           onPressed: () {
-          //             BlocProvider.of<TodoBloc>(context).add(TodoDelete(todo));
-          //           },
-          //         ),
-          //         onTap: () {
-          //           // Handle todo completion toggle
-          //           // final updatedTodo = todo.copyWith(completed: !todo.completed);
-          //           // BlocProvider.of<TodoBloc>(context).add(TodoUpdate(updatedTodo));
-          //         },
-          //       );
-          //     },
-          //   ),
-          // ),
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
         ],
       ),
     );

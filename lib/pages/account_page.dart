@@ -14,7 +14,7 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account'),
+        title: Text('Mind Orbital'),
         actions: [
           IconButton(
             icon: Icon(Icons.notification_important_rounded),
@@ -43,19 +43,6 @@ class AccountPage extends StatelessWidget {
                     style: TextStyle(fontSize: 24),
                   ),
                   SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                    },
-                    child: Text('Edit Profile'),
-                  ),
-                  SizedBox(height: 20),
-                  IconButton(
-                    icon: Icon(Icons.logout),
-                    onPressed: () {
-                      BlocProvider.of<AuthBloc>(context).add(AuthLogout());
-                      Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
-                    },
-                  ),
                 ],
               ),
             );

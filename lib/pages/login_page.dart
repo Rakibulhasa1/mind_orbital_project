@@ -118,9 +118,9 @@ class _LoginPageState extends State<LoginPage> {
                             _isLoading = true;
                           });
 
-                          await Future.delayed(Duration(seconds: 2)); // Simulating a network delay
+                          await Future.delayed(Duration(seconds: 2));  
 
-                          // Perform login operation here
+                           
                           BlocProvider.of<AuthBloc>(context).add(
                             AuthLogin(
                               _usernameController.text,
